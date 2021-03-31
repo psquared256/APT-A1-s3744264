@@ -1,0 +1,21 @@
+Milestone 3 Algorithm
+---------------------
+
+Take the closed list from the forward search
+Start at the end of the closed list (i.e. the goal node) and add to the pathList
+do
+    Find a node that has 1 less distance travelled than the current node and is neighbouring the current node
+    Swap to that node and add it to the pathList
+until distance travelled of the current node is 0
+Reverse the list and send it back
+
+----------------
+Alt algorithm
+----------------
+Take the closed list from the forward search
+Start at the end of the closed list (i.e. the goal node) and add to the pathList
+do
+    Find the shortest distance travelled out of all the nodes neighbouring the current node
+    Swap to that node and add it to the pathList
+until distance travelled of the current node is 0
+Reverse the list and send it back

@@ -1,0 +1,192 @@
+TESTING - COMMENT THE OUT TESTING BEFORE YOU SUBMIT!!!
+TESTING Node
+1,1,2
+7
+4,2,3
+0
+1
+TESTING NodeList
+NodeList size: 0
+NodeList size: 1
+NodeList size: 2
+NodeList copy size: 1
+NodeList size: 2
+NodeList copy size: 2
+0,0,1
+2,2,2
+PRINTING OUT A NODELIST IS AN EXERCISE FOR YOU TO DO
+DONE TESTING
+
+====================
+====================
+====================
+====================
+====================
+=S.......===========
+========.===========
+=......=.===========
+==.=.=...===========
+=..=..=.============
+=.===.=..===========
+=..==G==.===========
+====================
+====================
+====================
+====================
+====================
+====================
+====================
+====================
+Location of S: 1, 5
+Location of G: 5, 11
+1, 5, 0
+East node found
+Starting goal check
+Finishing goal check
+2, 5, 1
+East node found
+Starting goal check
+Finishing goal check
+3, 5, 2
+West node found
+East node found
+Starting goal check
+Finishing goal check
+4, 5, 3
+West node found
+East node found
+Starting goal check
+Finishing goal check
+5, 5, 4
+West node found
+East node found
+Starting goal check
+Finishing goal check
+6, 5, 5
+West node found
+East node found
+Starting goal check
+Finishing goal check
+7, 5, 6
+West node found
+East node found
+Starting goal check
+Finishing goal check
+8, 5, 7
+South node found
+West node found
+Starting goal check
+Finishing goal check
+8, 6, 8
+North node found
+South node found
+Starting goal check
+Finishing goal check
+8, 7, 9
+North node found
+South node found
+Starting goal check
+Finishing goal check
+8, 8, 10
+North node found
+West node found
+Starting goal check
+Finishing goal check
+7, 8, 11
+South node found
+West node found
+East node found
+Starting goal check
+Finishing goal check
+7, 9, 12
+North node found
+South node found
+Starting goal check
+Finishing goal check
+6, 8, 12
+North node found
+East node found
+Starting goal check
+Finishing goal check
+7, 10, 13
+North node found
+East node found
+Starting goal check
+Finishing goal check
+6, 7, 13
+South node found
+West node found
+Starting goal check
+Finishing goal check
+8, 10, 14
+South node found
+West node found
+Starting goal check
+Finishing goal check
+5, 7, 14
+West node found
+East node found
+Starting goal check
+Finishing goal check
+8, 11, 15
+North node found
+Starting goal check
+Finishing goal check
+4, 7, 15
+South node found
+West node found
+East node found
+Starting goal check
+Finishing goal check
+4, 8, 16
+North node found
+South node found
+Starting goal check
+Finishing goal check
+4, 9, 17
+North node found
+East node found
+Starting goal check
+Finishing goal check
+5, 9, 18
+South node found
+West node found
+Starting goal check
+Finishing goal check
+5, 10, 19
+North node found
+South node found
+Starting goal check
+Finishing goal check
+5, 11, 20
+North node found
+Starting goal check
+Finishing goal check
+Search completed
+Before retrieval
+0x55e7d3fe7120
+0x55e7d3fe7160
+0x55e7d3fe71a0
+0x55e7d3fe71e0
+0x55e7d3fe7220
+0x55e7d3fe7260
+0x55e7d3fe72a0
+0x55e7d3fe72e0
+0x55e7d3fe7320
+0x55e7d3fe7360
+0x55e7d3fe73a0
+0x55e7d3fe73e0
+0x55e7d3fe7440
+0x55e7d3fe7480
+0x55e7d3fe74c0
+0x55e7d3fe7500
+0x55e7d3fe7540
+0x55e7d3fe7580
+0x55e7d3fe75c0
+0x55e7d3fe75e0
+0x55e7d3fe7640
+0x55e7d3fe7680
+0x55e7d3fe76c0
+0x55e7d3fe7700
+0x55e7d3fe7740
+After retrieval

@@ -1,0 +1,57 @@
+TESTING - COMMENT THE OUT TESTING BEFORE YOU SUBMIT!!!
+TESTING Node
+1,1,2
+7
+4,2,3
+TESTING NodeList
+NodeList size: 0
+NodeList size: 1
+NodeList size: 2
+NodeList copy size: 1
+NodeList size: 2
+NodeList copy size: 2
+0,0,1
+2,2,2
+PRINTING OUT A NODELIST IS AN EXERCISE FOR YOU TO DO
+DONE TESTING
+
+====================
+====================
+====================
+====================
+====================
+=S.......===========
+========.===========
+=......=.===========
+==.=.=...===========
+=..=..=.============
+=.===.=..===========
+=..==G==.===========
+====================
+====================
+====================
+====================
+====================
+====================
+====================
+====================
+Location of S: 1, 5
+Location of G: 5, 11
+1, 5, 0
+1, 5, 0
+1, 5, 1
+1, 5, 0
+1, 5, 1
+Completed North Check
+Completed South Check
+Completed West Check
+East node found
+Completed East Check
+Adding element
+Element added
+1, 5, 1
+1, 5, 1
+Starting goal check
+Finishing goal check
+Search completed
+0x556b7561a120

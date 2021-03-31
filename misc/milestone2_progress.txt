@@ -1,0 +1,13 @@
+-Input: E - the environment
+-Input: S - start location of the robot in the environment
+-Input: G - goal location for the robot to get reach
+-Let P be a list of positions the robot can reach, with distances (initially contains S). This is also called the open-list.
+-Let C be a list of positions the that has already being explored, with distances (initially empty).  This is also called the closed-list.
+-repeat
+-Select the node p from the open-list P that has the smallest estimated distance (see Section 3.2.2) to goal and, is not in     the closed-list C.
+    -for Each position q in E that the robot can reach from p do
+        -Set the distance_travelled of q to be one more that that of p
+        Add q to open-list P only if it is not already in it.
+    end
+-Add p to closed-list C.
+-until The robot reaches the goal, that is, p == G, or no such position p can be found
