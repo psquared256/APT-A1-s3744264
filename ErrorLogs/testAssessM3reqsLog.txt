@@ -1,0 +1,140 @@
+TESTING - COMMENT THE OUT TESTING BEFORE YOU SUBMIT!!!
+TESTING Node
+1,1,2
+7
+4,2,3
+0
+1
+TESTING NodeList
+NodeList size: 0
+NodeList size: 1
+NodeList size: 2
+NodeList copy size: 1
+NodeList size: 2
+NodeList copy size: 2
+0,0,1
+2,2,2
+PRINTING OUT A NODELIST IS AN EXERCISE FOR YOU TO DO
+DONE TESTING
+
+====================
+====================
+====================
+====================
+====================
+====================
+====================
+===============....=
+===============....=
+==S..............G.=
+===============....=
+===============....=
+====================
+====================
+====================
+====================
+====================
+====================
+====================
+====================
+Location of S: 2, 9
+Location of G: 17, 9
+Starting...
+Index of node: 0
+Node found
+2, 9, 0
+Node Added
+Starting...
+Index of node: 1
+Node found
+3, 9, 1
+Node Added
+Starting...
+Index of node: 2
+Node found
+4, 9, 2
+Node Added
+Starting...
+Index of node: 3
+Node found
+5, 9, 3
+Node Added
+Starting...
+Index of node: 4
+Node found
+6, 9, 4
+Node Added
+Starting...
+Index of node: 5
+Node found
+7, 9, 5
+Node Added
+Starting...
+Index of node: 6
+Node found
+8, 9, 6
+Node Added
+Starting...
+Index of node: 7
+Node found
+9, 9, 7
+Node Added
+Starting...
+Index of node: 8
+Node found
+10, 9, 8
+Node Added
+Starting...
+Index of node: 9
+Node found
+11, 9, 9
+Node Added
+Starting...
+Index of node: 10
+Node found
+12, 9, 10
+Node Added
+Starting...
+Index of node: 11
+Node found
+13, 9, 11
+Node Added
+Starting...
+Index of node: 12
+Node found
+14, 9, 12
+Node Added
+Starting...
+Index of node: 13
+Node found
+15, 9, 13
+Node Added
+Starting...
+Index of node: 16
+Node found
+16, 9, 14
+Node Added
+Starting...
+Index of node: 19
+Node found
+17, 9, 15
+Node Added
+Search completed
+Before retrieval
+0x5576f2c48120
+0x5576f2c48160
+0x5576f2c481a0
+0x5576f2c481e0
+0x5576f2c48220
+0x5576f2c48260
+0x5576f2c482a0
+0x5576f2c482e0
+0x5576f2c48320
+0x5576f2c48360
+0x5576f2c483a0
+0x5576f2c483e0
+0x5576f2c48420
+0x5576f2c48460
+0x5576f2c484e0
+0x5576f2c48560
+After retrieval

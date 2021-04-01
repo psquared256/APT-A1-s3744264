@@ -50,7 +50,571 @@ Node found
 10, 3, 1
 Node Added
 Starting...
-Index of node: 0
+Index of node: 2
 Node found
-21962, 1569116448, 1569116512
+11, 3, 2
 Node Added
+Starting...
+Index of node: 3
+Node found
+12, 3, 3
+Node Added
+Starting...
+Index of node: 4
+Node found
+13, 3, 4
+Node Added
+Starting...
+Index of node: 5
+Node found
+14, 3, 5
+Node Added
+Starting...
+Index of node: 6
+Node found
+15, 3, 6
+Node Added
+Starting...
+Index of node: 7
+Node found
+16, 3, 7
+Node Added
+Starting...
+Index of node: 8
+Node found
+17, 3, 8
+Node Added
+Starting...
+Index of node: 9
+Node found
+17, 4, 9
+Node Added
+Starting...
+Index of node: 10
+Node found
+18, 4, 10
+Node Added
+Starting...
+Index of node: 11
+Node found
+18, 5, 11
+Node Added
+Starting...
+Index of node: 12
+Node found
+18, 6, 12
+Node Added
+Starting...
+Index of node: 13
+Node found
+18, 7, 13
+Node Added
+Starting...
+Index of node: 14
+Node found
+18, 8, 14
+Node Added
+Starting...
+Index of node: 15
+Node found
+17, 7, 14
+Node Added
+Starting...
+Index of node: 16
+Node found
+18, 9, 15
+Node Added
+Starting...
+Index of node: 17
+Node found
+16, 7, 15
+Node Added
+Starting...
+Index of node: 18
+Node found
+18, 10, 16
+Node Added
+Starting...
+Index of node: 19
+Node found
+15, 7, 16
+Node Added
+Starting...
+Index of node: 20
+Node found
+18, 11, 17
+Node Added
+Starting...
+Index of node: 22
+Node found
+15, 8, 17
+Node Added
+Starting...
+Index of node: 23
+Node found
+18, 12, 18
+Node Added
+Starting...
+Index of node: 24
+Node found
+15, 9, 18
+Node Added
+Starting...
+Index of node: 25
+Node found
+18, 13, 19
+Node Added
+Starting...
+Index of node: 26
+Node found
+14, 9, 19
+Node Added
+Starting...
+Index of node: 27
+Node found
+18, 14, 20
+Node Added
+Starting...
+Index of node: 28
+Node found
+14, 10, 20
+Node Added
+Starting...
+Index of node: 29
+Node found
+13, 9, 20
+Node Added
+Starting...
+Index of node: 31
+Node found
+14, 11, 21
+Node Added
+Starting...
+Index of node: 32
+Node found
+12, 9, 21
+Node Added
+Starting...
+Index of node: 33
+Node found
+14, 12, 22
+Node Added
+Starting...
+Index of node: 34
+Node found
+11, 9, 22
+Node Added
+Starting...
+Index of node: 35
+Node found
+13, 12, 23
+Node Added
+Starting...
+Index of node: 36
+Node found
+10, 9, 23
+Node Added
+Starting...
+Index of node: 37
+Node found
+13, 13, 24
+Node Added
+Starting...
+Index of node: 38
+Node found
+12, 12, 24
+Node Added
+Starting...
+Index of node: 39
+Node found
+9, 9, 24
+Node Added
+Starting...
+Index of node: 40
+Node found
+13, 14, 25
+Node Added
+Starting...
+Index of node: 41
+Node found
+11, 12, 25
+Node Added
+Starting...
+Index of node: 42
+Node found
+8, 9, 25
+Node Added
+Starting...
+Index of node: 44
+Node found
+10, 12, 26
+Node Added
+Starting...
+Index of node: 45
+Node found
+7, 9, 26
+Node Added
+Starting...
+Index of node: 46
+Node found
+9, 12, 27
+Node Added
+Starting...
+Index of node: 48
+Node found
+8, 12, 28
+Node Added
+Starting...
+Index of node: 49
+Node found
+7, 12, 29
+Node Added
+Starting...
+Index of node: 21
+Node found
+15, 6, 17
+Node Added
+Starting...
+Index of node: 30
+Node found
+18, 15, 21
+Node Added
+Starting...
+Index of node: 43
+Node found
+13, 15, 26
+Node Added
+Starting...
+Index of node: 47
+Node found
+6, 9, 27
+Node Added
+Starting...
+Index of node: 50
+Node found
+14, 6, 18
+Node Added
+Starting...
+Index of node: 51
+Node found
+17, 15, 22
+Node Added
+Starting...
+Index of node: 52
+Node found
+12, 15, 27
+Node Added
+Starting...
+Index of node: 54
+Node found
+6, 10, 28
+Node Added
+Starting...
+Index of node: 56
+Node found
+13, 6, 19
+Node Added
+Starting...
+Index of node: 59
+Node found
+6, 11, 29
+Node Added
+Starting...
+Index of node: 60
+Node found
+12, 6, 20
+Node Added
+Starting...
+Index of node: 62
+Node found
+11, 6, 21
+Node Added
+Starting...
+Index of node: 63
+Node found
+10, 6, 22
+Node Added
+Starting...
+Index of node: 64
+Node found
+9, 6, 23
+Node Added
+Starting...
+Index of node: 66
+Node found
+9, 7, 24
+Node Added
+Starting...
+Index of node: 67
+Node found
+8, 7, 25
+Node Added
+Starting...
+Index of node: 68
+Node found
+7, 7, 26
+Node Added
+Starting...
+Index of node: 53
+Node found
+14, 15, 27
+Node Added
+Starting...
+Index of node: 55
+Node found
+14, 5, 19
+Node Added
+Starting...
+Index of node: 57
+Node found
+17, 16, 23
+Node Added
+Starting...
+Index of node: 58
+Node found
+12, 16, 28
+Node Added
+Starting...
+Index of node: 61
+Node found
+5, 11, 30
+Node Added
+Starting...
+Index of node: 65
+Node found
+9, 5, 24
+Node Added
+Starting...
+Index of node: 69
+Node found
+6, 7, 27
+Node Added
+Starting...
+Index of node: 72
+Node found
+11, 16, 29
+Node Added
+Starting...
+Index of node: 74
+Node found
+8, 5, 25
+Node Added
+Starting...
+Index of node: 76
+Node found
+10, 16, 30
+Node Added
+Starting...
+Index of node: 78
+Node found
+9, 16, 31
+Node Added
+Starting...
+Index of node: 79
+Node found
+8, 16, 32
+Node Added
+Starting...
+Index of node: 70
+Node found
+14, 16, 28
+Node Added
+Starting...
+Index of node: 71
+Node found
+17, 17, 24
+Node Added
+Starting...
+Index of node: 73
+Node found
+4, 11, 31
+Node Added
+Starting...
+Index of node: 75
+Node found
+5, 7, 28
+Node Added
+Starting...
+Index of node: 77
+Node found
+8, 4, 26
+Node Added
+Starting...
+Index of node: 82
+Node found
+4, 12, 32
+Node Added
+Starting...
+Index of node: 84
+Node found
+7, 4, 27
+Node Added
+Starting...
+Index of node: 85
+Node found
+4, 13, 33
+Node Added
+Starting...
+Index of node: 87
+Node found
+4, 14, 34
+Node Added
+Starting...
+Index of node: 88
+Node found
+5, 14, 35
+Node Added
+Starting...
+Index of node: 80
+Node found
+14, 17, 29
+Node Added
+Starting...
+Index of node: 81
+Node found
+17, 18, 25
+Node Added
+Starting...
+Index of node: 83
+Node found
+4, 7, 29
+Node Added
+Starting...
+Index of node: 86
+Node found
+6, 4, 28
+Node Added
+Starting...
+Index of node: 89
+Node found
+5, 15, 36
+Node Added
+Starting...
+Index of node: 91
+Node found
+4, 8, 30
+Node Added
+Starting...
+Index of node: 93
+Node found
+6, 5, 29
+Node Added
+Starting...
+Index of node: 94
+Node found
+6, 15, 37
+Node Added
+Starting...
+Index of node: 95
+Node found
+4, 9, 31
+Node Added
+Starting...
+Index of node: 97
+Node found
+7, 15, 38
+Node Added
+Starting...
+Index of node: 98
+Node found
+7, 14, 39
+Node Added
+Search completed
+Before retrieval
+0x5602fec30120
+0x5602fec30160
+0x5602fec301a0
+0x5602fec301e0
+0x5602fec30220
+0x5602fec30260
+0x5602fec302a0
+0x5602fec302e0
+0x5602fec30320
+0x5602fec30360
+0x5602fec303a0
+0x5602fec303e0
+0x5602fec30420
+0x5602fec30460
+0x5602fec304c0
+0x5602fec30500
+0x5602fec30540
+0x5602fec30580
+0x5602fec305c0
+0x5602fec30600
+0x5602fec30660
+0x5602fec306a0
+0x5602fec306e0
+0x5602fec30720
+0x5602fec30760
+0x5602fec307a0
+0x5602fec30800
+0x5602fec30840
+0x5602fec30880
+0x5602fec308c0
+0x5602fec30900
+0x5602fec30940
+0x5602fec30980
+0x5602fec309c0
+0x5602fec30a20
+0x5602fec30a60
+0x5602fec30aa0
+0x5602fec30ae0
+0x5602fec30b20
+0x5602fec30b60
+0x5602fec30ba0
+0x5602fec30be0
+0x5602fec30c20
+0x5602fec30c60
+0x5602fec30ca0
+0x5602fec30ce0
+0x5602fec30d00
+0x5602fec30d40
+0x5602fec30d80
+0x5602fec30de0
+0x5602fec30e20
+0x5602fec30e80
+0x5602fec30ec0
+0x5602fec30f00
+0x5602fec30f40
+0x5602fec30f80
+0x5602fec30fc0
+0x5602fec31000
+0x5602fec31040
+0x5602fec31080
+0x5602fec310e0
+0x5602fec31120
+0x5602fec31160
+0x5602fec311a0
+0x5602fec311e0
+0x5602fec31200
+0x5602fec31240
+0x5602fec31280
+0x5602fec312c0
+0x5602fec31300
+0x5602fec31340
+0x5602fec31380
+0x5602fec313c0
+0x5602fec31400
+0x5602fec31440
+0x5602fec31460
+0x5602fec314a0
+0x5602fec314e0
+0x5602fec31520
+0x5602fec31560
+0x5602fec315a0
+0x5602fec315e0
+0x5602fec31620
+0x5602fec31660
+0x5602fec316a0
+0x5602fec316e0
+0x5602fec31720
+0x5602fec31740
+0x5602fec31780
+0x5602fec317e0
+0x5602fec31820
+0x5602fec31860
+0x5602fec318a0
+0x5602fec318e0
+0x5602fec31900
+0x5602fec31940
+After retrieval
