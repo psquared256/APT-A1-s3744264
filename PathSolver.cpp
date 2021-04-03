@@ -20,32 +20,16 @@ void PathSolver::forwardSearch(Env env)
     // TODO
     NodeList *openList = new NodeList();
     Node *start = new Node(0, 0, 0);
-    start->searchPosition('S', env);
+    start->searchPosition(SYMBOL_START, env);
     Node *goal = new Node(0, 0, 0);
-    goal->searchPosition('G', env);
+    goal->searchPosition(SYMBOL_GOAL, env);
     openList->addElement(new Node(start->getRow(), start->getCol(), start->getDistanceTraveled()));
     Node *navi = nullptr;
-    Node *north = nullptr;
-    Node *east = nullptr;
-    Node *south = nullptr;
-    Node *west = nullptr;
-    int shortest_dist = 400;
     int shortest_index = 0;
-    bool reachedGoal = false;
     do
     {
-        if(openList->getLength() == 81)
-        {std::cout << std::endl;}
         //Finds the node with the shortest distance to
-        for (int i = 0; i < openList->getLength(); i++)
-        {
-            if (openList->getNode(i)->getEstimatedDist2Goal(goal) < shortest_dist && !nodeExistsinList(openList->getNode(i),nodesExplored, nodesExplored->getLength()))
-            {
-                shortest_dist = openList->getNode(i)->getEstimatedDist2Goal(goal);
-                shortest_index = i;
-                
-            }
-        }
+        shortest_index = selectNode(openList, goal, openList->getLength());
 
         //Adds node details to navi and displays details
         navi = new Node(openList->getNode(shortest_index)->getRow(),
@@ -53,80 +37,14 @@ void PathSolver::forwardSearch(Env env)
         openList->getNode(shortest_index)->getDistanceTraveled());
 
 
-       //Ends node search
-        if (env[(navi->getRow() - 1)][(navi->getCol())] == '.' || env[(navi->getRow() - 1)][(navi->getCol())] == 'G')
-        {
-            north = new Node(navi->getRow() - 1, 
-            navi->getCol(),
-            navi->getDistanceTraveled());
-            north->setDistanceTraveled(navi->getDistanceTraveled());
-            if(!nodeExistsinList(north,openList,openList->getLength()))
-            {
-                openList->addElement(new Node(north->getRow(),north->getCol(),north->getDistanceTraveled()));
-                delete north;
-            }else
-            {
-                delete north;
-            }
-
-        }
-        if (env[navi->getRow() + 1][navi->getCol()] == '.' || env[navi->getRow() + 1][navi->getCol()] == 'G')
-        {
-            south = new Node(navi->getRow() + 1, 
-            navi->getCol(),
-            navi->getDistanceTraveled());
-            south->setDistanceTraveled(navi->getDistanceTraveled());
-            if(!nodeExistsinList(south,openList,openList->getLength()))
-            {
-                openList->addElement(new Node(south->getRow(),south->getCol(),south->getDistanceTraveled()));
-                delete south;
-            }else
-            {
-                delete south;
-            }
-        }
-        if (env[navi->getRow()][navi->getCol() - 1] == '.' || env[navi->getRow()][navi->getCol() - 1] == 'G')
-        {
-            west = new Node(navi->getRow(), 
-            navi->getCol() - 1,
-            navi->getDistanceTraveled());
-            west->setDistanceTraveled(navi->getDistanceTraveled());
-            if(!nodeExistsinList(west,openList,openList->getLength()))
-            {
-                openList->addElement(new Node(west->getRow(),west->getCol(),west->getDistanceTraveled()));
-                delete west;
-            }else
-            {
-                delete west;
-            }
-        }
-        if (env[navi->getRow()][navi->getCol() + 1] == '.' || env[navi->getRow()][navi->getCol() + 1] == 'G')
-        {
-            east = new Node(navi->getRow(), 
-            navi->getCol() + 1,
-            navi->getDistanceTraveled());
-            east->setDistanceTraveled(navi->getDistanceTraveled());
-            if(!nodeExistsinList(east,openList,openList->getLength()))
-            {
-                openList->addElement(new Node(east->getRow(),east->getCol(),east->getDistanceTraveled()));
-                delete east;
-            }else
-            {
-                delete east;
-            }
-        }
+        //Ends node search
+        nodeNeighbour(env, navi->getRow() - 1, navi->getCol(), navi->getDistanceTraveled(), &openList);
+        nodeNeighbour(env, navi->getRow() + 1, navi->getCol(), navi->getDistanceTraveled(), &openList);
+        nodeNeighbour(env, navi->getRow(), navi->getCol() - 1, navi->getDistanceTraveled(), &openList);
+        nodeNeighbour(env, navi->getRow(), navi->getCol() + 1, navi->getDistanceTraveled(), &openList);
         nodesExplored->addElement(new Node(navi->getRow(),navi->getCol(),navi->getDistanceTraveled()));
         delete navi;
-        shortest_dist = 400;
-        shortest_index = 0;       
-        for (int i = 0; i < nodesExplored->getLength(); i++)
-        {
-            if (nodesExplored->getNode(i)->getCol() == goal->getCol() && nodesExplored->getNode(i)->getRow() == goal->getRow())
-            {
-                reachedGoal = true;
-            }
-        }
-    } while (!reachedGoal);
+    } while (goalReached(nodesExplored, goal, nodesExplored->getLength()));
     std::cout << "Search completed" << std::endl;
 
 }
@@ -135,7 +53,7 @@ NodeList *PathSolver::getNodesExplored()
 {
     //TODO
     for (int i = 0; i < nodesExplored->getLength(); i++)
-    {std::cout << nodesExplored->getNode(i) << std::endl;}
+    {std::cout << nodesExplored->getNode(i)->getCol() << ", " << nodesExplored->getNode(i)->getRow() << ", " << nodesExplored->getNode(i)->getDistanceTraveled() << std::endl;}
     return nodesExplored;
 
     //return nullptr;
@@ -148,37 +66,36 @@ NodeList *PathSolver::getPath(Env env)
 }
 
 //Custom methods/functions
-
-void PathSolver::selectNode(NodeList *openList, Node *p, Node *goal)
+int PathSolver::selectNode(NodeList *openList, Node *goal, int length)
 {
-    int shortest_dist = 100;
+    int shortest_dist = 400;
     int shortest_index = 0;
-    for (int i = 0; i < openList->getLength(); i++)
+    for (int i = 0; i < length; i++)
     {
-        if (openList->getNode(i)->getEstimatedDist2Goal(goal) < shortest_dist)
+        if (openList->getNode(i)->getEstimatedDist2Goal(goal) < shortest_dist && 
+        !nodeExistsinList(openList->getNode(i),nodesExplored,nodesExplored->getLength()))
         {
             shortest_dist = openList->getNode(i)->getEstimatedDist2Goal(goal);
             shortest_index = i;
         }
     }
-    p = openList->getNode(shortest_index);
+    return shortest_index;
 }
 
-bool PathSolver::goalReached(NodeList *closedList, Node *goal)
+bool PathSolver::goalReached(NodeList *closedList, Node *goal, int length)
 {
-    for (int i = 0; i < closedList->getLength(); i++)
+    for (int i = 0; i < length; i++)
     {
-        // std::cout << "Starting goal check" << std::endl;
-        if (closedList->getNode(i)->getCol() == goal->getCol() && closedList->getNode(i)->getRow() == goal->getRow())
+        if (closedList->getNode(i)->getCol() == goal->getCol() && 
+        closedList->getNode(i)->getRow() == goal->getRow())
         {
             return false;
         }
     }
-    // std::cout << "Finishing goal check" << std::endl;
     return true;
 }
 
-bool PathSolver::nodeExistsinList(Node* n,NodeList* list, int length){
+bool PathSolver::nodeExistsinList(Node* n, NodeList* list, int length){
     for (int i = 0; i < length; i++)
     {
         if (n->nodeEquals(list->getNode(i)))
@@ -187,6 +104,30 @@ bool PathSolver::nodeExistsinList(Node* n,NodeList* list, int length){
         }
     }
     return false;    
+}
+
+bool PathSolver::nodeExistsinList(int row, int col, NodeList* list, int length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        if (list->getNode(i)->getRow() == row && list->getNode(i)->getCol() == col)
+        {
+            return true;
+        }
+    }
+    return false;    
+}
+
+void PathSolver::nodeNeighbour(Env env, int row, int col, int dist, NodeList** openList)
+{
+    if (env[row][col] == SYMBOL_EMPTY || env[row][col] == SYMBOL_GOAL)
+    {
+        if(!nodeExistsinList(row, col,(*openList),(*openList)->getLength()))
+        {
+            (*openList)->addElement(new Node(row, col, dist));
+            (*openList)->getNode((*openList)->getLength()-1)->setDistanceTraveled(dist);
+        }
+    }
 }
 
 //-----------------------------

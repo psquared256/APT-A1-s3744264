@@ -32,9 +32,11 @@ public:
     /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
     /*                                           */
     
-    void selectNode(NodeList* openList, Node* p, Node* goal);
-    bool goalReached(NodeList* closedList, Node* goal);
+    int selectNode(NodeList* openList, Node* goal, int length);
+    bool goalReached(NodeList* closedList, Node* goal, int length);
     bool nodeExistsinList(Node* n, NodeList* list, int length);
+    bool nodeExistsinList(int row, int col, NodeList* list, int length);
+    void nodeNeighbour(Env env, int row, int col, int dist, NodeList** openList);
 
 
 private:
