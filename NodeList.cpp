@@ -8,7 +8,7 @@ NodeList::NodeList(){
     //Node* nodes[NODE_LIST_ARRAY_MAX_SIZE];
     // Node** nodes = new Node*[NODE_LIST_ARRAY_MAX_SIZE];
     // int* length = new int(0);
-    length = 0;
+    this->length = 0;
 }
 
 NodeList::~NodeList(){

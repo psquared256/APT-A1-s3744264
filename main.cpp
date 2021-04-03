@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     // THIS WILL ONLY WORK IF YOU'VE FINISHED MILESTONE 2
     PathSolver *pathSolver = new PathSolver();
     pathSolver->forwardSearch(env);
-    
+
     NodeList *exploredPositions = nullptr;
     std::cout << "Before retrieval" << std::endl;
     exploredPositions = pathSolver->getNodesExplored();
@@ -79,7 +79,42 @@ void readEnvStdin(Env env)
 
 void printEnvStdout(Env env, NodeList *solution)
 {
-    //TODO
+    //TODOs
+    int solLength = solution->getLength();
+    for (int i = 1; i < solLength - 1; i++)
+    {
+        if (solution->getNode(i)->getCol() + 1 == solution->getNode(i + 1)->getCol() &&
+            solution->getNode(i)->getRow() == solution->getNode(i + 1)->getRow())
+        {
+            env[solution->getNode(i)->getRow()][solution->getNode(i)->getCol()] = '>';
+        }
+        else if (solution->getNode(i)->getCol() == solution->getNode(i + 1)->getCol() &&
+                 solution->getNode(i)->getRow() + 1 == solution->getNode(i + 1)->getRow())
+        {
+            env[solution->getNode(i)->getRow()][solution->getNode(i)->getCol()] = 'v';
+        }
+        else if (solution->getNode(i)->getCol() - 1 == solution->getNode(i + 1)->getCol() &&
+                 solution->getNode(i)->getRow() == solution->getNode(i + 1)->getRow())
+        {
+            env[solution->getNode(i)->getRow()][solution->getNode(i)->getCol()] = '<';
+        }
+        else if (solution->getNode(i)->getCol() == solution->getNode(i + 1)->getCol() &&
+                 solution->getNode(i)->getRow() - 1 == solution->getNode(i + 1)->getRow())
+        {
+            env[solution->getNode(i)->getRow()][solution->getNode(i)->getCol()] = '^';
+        }
+    }
+
+    for (int i = 0; i < 20; i++)
+    {
+        for (int j = 0; j < 20; j++)
+        {
+            std::cout << env[i][j];
+        }
+        std::cout << std::endl;
+    }
+
+    std::cout << "Path completed." << std::endl;
 }
 
 void testNode()
@@ -106,7 +141,7 @@ void testNode()
     //Test node comparison
     Node *n1 = new Node(1, 1, 2);
     Node *n2 = new Node(1, 1, 2);
-    std::cout << (n1==n2) << std::endl;
+    std::cout << (n1 == n2) << std::endl;
     std::cout << n1->nodeEquals(n2) << std::endl;
     delete n1;
     delete n2;

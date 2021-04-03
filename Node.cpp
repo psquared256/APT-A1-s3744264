@@ -79,6 +79,8 @@ bool Node::nodeEquals(Node* n){
     }
 }
 
-
+void Node::printNode(){
+    std::cout << this->getCol() << ", " << this->getRow() << ", " << this->getDistanceTraveled() << std::endl;
+}
 
 //--------------------------------

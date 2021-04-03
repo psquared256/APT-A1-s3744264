@@ -35,6 +35,7 @@ public:
     void selectNode(NodeList* openList, Node* p, Node* goal);
     bool goalReached(NodeList* closedList, Node* goal);
     bool nodeExistsinList(Node* n,NodeList* list);
+    bool nodeNeighbour(Node* pathNode, Node* listNode);
 
 
 private:

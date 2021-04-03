@@ -31,6 +31,7 @@ public:
     /*                                           */
     void searchPosition(char position, Env env);
     bool nodeEquals(Node* n);
+    void printNode();
 
 private:
     /*                                           */
