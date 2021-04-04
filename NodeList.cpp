@@ -5,18 +5,23 @@ NodeList::NodeList(){
     // TODO
     //Not initialising node pointer array properly
 
-    //Node* nodes[NODE_LIST_ARRAY_MAX_SIZE];
-    // Node** nodes = new Node*[NODE_LIST_ARRAY_MAX_SIZE];
-    // int* length = new int(0);
     this->length = 0;
 }
 
 NodeList::~NodeList(){
     // TODO
     for (int i=0;i<this->length;i++){
-        this->nodes[i]->~Node();
-        
+        delete nodes[i];
     }
+
+    // for (int i=0;i<this->length;i++){
+    //     if(this->nodes[i] == nullptr)
+    //     {
+    //         delete this->nodes[i];
+    //     }
+    // }
+
+    // delete[] this->nodes;
 
 }
 
@@ -34,7 +39,6 @@ NodeList::NodeList(NodeList& other){
 int NodeList::getLength(){
     // TODO
     return length;
-    //return -1;
 
 }
 
@@ -47,5 +51,4 @@ void NodeList::addElement(Node* newPos){
 Node* NodeList::getNode(int i){
     // TODO
     return nodes[i];
-    //return nullptr;
 }

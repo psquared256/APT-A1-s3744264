@@ -25,11 +25,11 @@ int main(int argc, char **argv)
     // AS YOU WORK ON MILESTONE 2. YOU CAN UPDATE THEM YOURSELF
     // AS YOU GO ALONG.
     // COMMENT THESE OUT BEFORE YOU SUBMIT!!!
-    std::cout << "TESTING - COMMENT THE OUT TESTING BEFORE YOU SUBMIT!!!" << std::endl;
-    testNode();
-    testNodeList();
-    std::cout << "DONE TESTING" << std::endl
-              << std::endl;
+    // std::cout << "TESTING - COMMENT THE OUT TESTING BEFORE YOU SUBMIT!!!" << std::endl;
+    // testNode();
+    // testNodeList();
+    // std::cout << "DONE TESTING" << std::endl
+    //           << std::endl;
 
     // Load Environment
     Env env;
@@ -41,9 +41,7 @@ int main(int argc, char **argv)
     pathSolver->forwardSearch(env);
 
     NodeList *exploredPositions = nullptr;
-    std::cout << "Before retrieval" << std::endl;
     exploredPositions = pathSolver->getNodesExplored();
-    std::cout << "After retrieval" << std::endl;
 
     // Get the path
     // THIS WILL ONLY WORK IF YOU'VE FINISHED MILESTONE 3
@@ -67,14 +65,14 @@ void readEnvStdin(Env env)
         line++;
     }
 
-    for (int i = 0; i < 20; i++)
-    {
-        for (int j = 0; j < 20; j++)
-        {
-            std::cout << env[i][j];
-        }
-        std::cout << std::endl;
-    }
+    // for (int i = 0; i < 20; i++)
+    // {
+    //     for (int j = 0; j < 20; j++)
+    //     {
+    //         std::cout << env[i][j];
+    //     }
+    //     std::cout << std::endl;
+    // }
 }
 
 void printEnvStdout(Env env, NodeList *solution)
@@ -114,7 +112,6 @@ void printEnvStdout(Env env, NodeList *solution)
         std::cout << std::endl;
     }
 
-    std::cout << "Path completed." << std::endl;
 }
 
 void testNode()

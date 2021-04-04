@@ -66,15 +66,12 @@ void Node::searchPosition(char position, Env env){
     }
     col = x;
     row = y;
-    std::cout << "Location of " << position << ": " << x << ", " << y << std::endl;
 }
 
 bool Node::nodeEquals(Node* n){
     if(this->getCol() == n->getCol() && this->getRow() == n->getRow()){
-        //std::cout << (this->getCol() == n->getCol()) << std::endl;
         return true;
     }else{
-        //std::cout << (this->getCol() == n->getCol()) << std::endl;
         return false;
     }
 }
