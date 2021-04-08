@@ -36,7 +36,7 @@ public:
     bool goalReached(NodeList* closedList, Node* goal, int length);
     //bool nodeExistsinList(Node* n, NodeList* list, int length);
     bool nodeExistsinList(int row, int col, NodeList* list, int length);
-    void nodeNeighbour(Env env, int row, int col, int dist, NodeList** openList);
+    void nodeContains(Env env, int row, int col, int dist, NodeList** openList);
     bool pathNeighbour(Node* pathNode, Node* listNode);
 
 

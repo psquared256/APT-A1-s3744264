@@ -1,3 +1,15 @@
+/* Pemal Padukkage (s3744264)
+* 
+* This implementation takes an iterative approach.  One step is completed at a time
+* so that the code is not too complex, where part 1 reads in an array, part 2 focuses 
+* on finding the goal, part 3 focuses on thinning the nodelist so that only the 
+* shortest path is present, and part 4 modifies the environment using the thinned nodelist.  
+* The main issue encountered was in milestone 2 concerning the handling of dynamic memory
+* management, where certain functions would fail due to initial mishandling of memory on heap.
+* This isseu was resolved by duplicating elements when necessary such as Nodes and NodeLists 
+* and reducing the use of heap memory when possible such as with methods fowardSearch and NodeContains.
+*/
+
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
@@ -65,16 +77,11 @@ void readEnvStdin(Env env)
         line++;
     }
 
-    // for (int i = 0; i < 20; i++)
-    // {
-    //     for (int j = 0; j < 20; j++)
-    //     {
-    //         std::cout << env[i][j];
-    //     }
-    //     std::cout << std::endl;
-    // }
 }
 
+//Iterates through the array of nodes, and replaces the character of the environment
+//with the direction the robot has moved from any given position until the goal node.
+//Prints out the environment when completed.
 void printEnvStdout(Env env, NodeList *solution)
 {
     //TODOs

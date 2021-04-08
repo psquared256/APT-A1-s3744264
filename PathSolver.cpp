@@ -15,7 +15,6 @@ PathSolver::~PathSolver()
 
 void PathSolver::forwardSearch(Env env)
 {
-//Start breakpoint at node index 80
 
     // TODO
     NodeList *openList = new NodeList();
@@ -28,20 +27,19 @@ void PathSolver::forwardSearch(Env env)
     int shortest_index = 0;
     do
     {
-        //Finds the node with the shortest distance to
+        
         shortest_index = selectNode(openList, goal, openList->getLength());
 
-        //Adds node details to navi and displays details
+        //Adds node details to navi
         navi = new Node(openList->getNode(shortest_index)->getRow(),
         openList->getNode(shortest_index)->getCol(),
         openList->getNode(shortest_index)->getDistanceTraveled());
 
 
-        //Ends node search
-        nodeNeighbour(env, navi->getRow() - 1, navi->getCol(), navi->getDistanceTraveled(), &openList);
-        nodeNeighbour(env, navi->getRow() + 1, navi->getCol(), navi->getDistanceTraveled(), &openList);
-        nodeNeighbour(env, navi->getRow(), navi->getCol() - 1, navi->getDistanceTraveled(), &openList);
-        nodeNeighbour(env, navi->getRow(), navi->getCol() + 1, navi->getDistanceTraveled(), &openList);
+        nodeContains(env, navi->getRow() - 1, navi->getCol(), navi->getDistanceTraveled(), &openList);
+        nodeContains(env, navi->getRow() + 1, navi->getCol(), navi->getDistanceTraveled(), &openList);
+        nodeContains(env, navi->getRow(), navi->getCol() - 1, navi->getDistanceTraveled(), &openList);
+        nodeContains(env, navi->getRow(), navi->getCol() + 1, navi->getDistanceTraveled(), &openList);
         nodesExplored->addElement(new Node(navi->getRow(),navi->getCol(),navi->getDistanceTraveled()));
         delete navi;
     } while (goalReached(nodesExplored, goal, nodesExplored->getLength()));
@@ -53,8 +51,6 @@ void PathSolver::forwardSearch(Env env)
 NodeList *PathSolver::getNodesExplored()
 {
     //TODO
-    //for (int i = 0; i < nodesExplored->getLength(); i++)
-    //{nodesExplored->getNode(i)->printNode();}
     NodeList* exploredPositions = new NodeList(*nodesExplored);
     return exploredPositions;
 }
@@ -83,9 +79,6 @@ NodeList *PathSolver::getPath(Env env)
         }
         nextStep = false;
     }while(path_dist!=0);
-    // for (int i = 0; i < path->getLength(); i++)
-    // {path->getNode(i)->printNode();}
-    // std::cout << "Pure path retrieved" << std::endl;
 
     NodeList *path_rev = new NodeList();
     for(int i = path->getLength()-1; i >= 0; i--)
@@ -93,14 +86,13 @@ NodeList *PathSolver::getPath(Env env)
         path_rev->addElement(new Node(path->getNode(i)->getRow(),
         path->getNode(i)->getCol(), path->getNode(i)->getDistanceTraveled()));
     }
-    // for (int i = 0; i < path->getLength(); i++)
-    // {path_rev->getNode(i)->printNode();}
-    // std::cout << "Reverse of pure path retrieved" << std::endl;
     delete path;
     return path_rev;
 }
 
 //Custom methods/functions
+
+//Finds the node with the shortest distance to goal and not present in the closed list
 int PathSolver::selectNode(NodeList *openList, Node *goal, int length)
 {
     int shortest_dist = 400;
@@ -108,7 +100,8 @@ int PathSolver::selectNode(NodeList *openList, Node *goal, int length)
     for (int i = 0; i < length; i++)
     {
         if (openList->getNode(i)->getEstimatedDist2Goal(goal) < shortest_dist && 
-        !nodeExistsinList(openList->getNode(i)->getRow(), openList->getNode(i)->getCol(),nodesExplored,nodesExplored->getLength()))
+        !nodeExistsinList(openList->getNode(i)->getRow(), openList->getNode(i)->getCol(),
+        nodesExplored,nodesExplored->getLength()))
         {
             shortest_dist = openList->getNode(i)->getEstimatedDist2Goal(goal);
             shortest_index = i;
@@ -117,6 +110,8 @@ int PathSolver::selectNode(NodeList *openList, Node *goal, int length)
     return shortest_index;
 }
 
+//Checks the closed list to see if any of the nodes contained matches
+//the coordinates of the goal
 bool PathSolver::goalReached(NodeList *closedList, Node *goal, int length)
 {
     for (int i = 0; i < length; i++)
@@ -130,6 +125,7 @@ bool PathSolver::goalReached(NodeList *closedList, Node *goal, int length)
     return true;
 }
 
+//Takes two nodes and checks if they are next to each other
 bool PathSolver::pathNeighbour(Node* pathNode, Node* listNode){
     if (pathNode->getDistanceTraveled() - 1 == listNode->getDistanceTraveled())
     {
@@ -154,6 +150,8 @@ bool PathSolver::pathNeighbour(Node* pathNode, Node* listNode){
     return false;
 }
 
+//Takes coordinates from a node and a list and checks if the coordinates 
+//match with any of the nodes in the list
 bool PathSolver::nodeExistsinList(int row, int col, NodeList* list, int length)
 {
     for (int i = 0; i < length; i++)
@@ -166,7 +164,10 @@ bool PathSolver::nodeExistsinList(int row, int col, NodeList* list, int length)
     return false;    
 }
 
-void PathSolver::nodeNeighbour(Env env, int row, int col, int dist, NodeList** openList)
+//Takes the environment, a node's details and the openlist.
+//Checks if the coordinates contain an empty space or goal,
+//and adds details to the open list if true
+void PathSolver::nodeContains(Env env, int row, int col, int dist, NodeList** openList)
 {
     if (env[row][col] == SYMBOL_EMPTY || env[row][col] == SYMBOL_GOAL)
     {

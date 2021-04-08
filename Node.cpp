@@ -49,6 +49,7 @@ int Node::getEstimatedDist2Goal(Node *goal)
 
 //Custom methods/functions
 
+//Searches the position of the node which contains the character
 void Node::searchPosition(char position, Env env){
     int x = 0;
     int y = 0;
@@ -68,6 +69,7 @@ void Node::searchPosition(char position, Env env){
     row = y;
 }
 
+//Checks to see if two nodes are equal
 bool Node::nodeEquals(Node* n){
     if(this->getCol() == n->getCol() && this->getRow() == n->getRow()){
         return true;
@@ -77,7 +79,8 @@ bool Node::nodeEquals(Node* n){
 }
 
 void Node::printNode(){
-    std::cout << this->getCol() << ", " << this->getRow() << ", " << this->getDistanceTraveled() << std::endl;
+    std::cout << this->getCol() << ", " << this->getRow() << 
+    ", " << this->getDistanceTraveled() << std::endl;
 }
 
 //--------------------------------
