@@ -6,7 +6,7 @@
 * shortest path is present, and part 4 modifies the environment using the thinned nodelist.  
 * The main issue encountered was in milestone 2 concerning the handling of dynamic memory
 * management, where certain functions would fail due to initial mishandling of memory on heap.
-* This isseu was resolved by duplicating elements when necessary such as Nodes and NodeLists 
+* This issue was resolved by duplicating elements when necessary such as Nodes and NodeLists 
 * and reducing the use of heap memory when possible such as with methods fowardSearch and NodeContains.
 */
 
