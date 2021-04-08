@@ -50,12 +50,12 @@ int Node::getEstimatedDist2Goal(Node *goal)
 //Custom methods/functions
 
 //Searches the position of the node which contains the character
-void Node::searchPosition(char position, Env env){
+void Node::searchPosition(char position, Env env, int rows, int columns){
     int x = 0;
     int y = 0;
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < 20; j++)
+        for (int j = 0; j < columns; j++)
         {
             if (env[i][j] == position)
             {

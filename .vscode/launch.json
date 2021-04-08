@@ -10,7 +10,7 @@
             "name": "APT - Assignment 1",
             "program": "assign1",
             //"args": ["<", "sampletest/testShortestPath.env"]
-            "args": ["<sampletest/testShortestPath.env"]
+            // "args": ["<sampletest/testShortestPath.env"]
         }
 
     ]

@@ -32,12 +32,15 @@ public:
     /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
     /*                                           */
     
-    int selectNode(NodeList* openList, Node* goal, int length);
+    int selectNode(NodeList* openList, Node* goal, int length, int max_dist);
     bool goalReached(NodeList* closedList, Node* goal, int length);
-    //bool nodeExistsinList(Node* n, NodeList* list, int length);
     bool nodeExistsinList(int row, int col, NodeList* list, int length);
     void nodeContains(Env env, int row, int col, int dist, NodeList** openList);
     bool pathNeighbour(Node* pathNode, Node* listNode);
+
+    //Milestone 4 function prototypes
+    PathSolver(int rows, int columns);
+    void forwardSearch(Env env, int rows, int columns);
 
 
 private:

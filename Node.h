@@ -29,7 +29,7 @@ public:
     /*                                           */
     /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
     /*                                           */
-    void searchPosition(char position, Env env);
+    void searchPosition(char position, Env env, int rows, int columns);
     bool nodeEquals(Node* n);
     void printNode();
 

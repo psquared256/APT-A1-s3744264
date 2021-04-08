@@ -19,16 +19,16 @@ void PathSolver::forwardSearch(Env env)
     // TODO
     NodeList *openList = new NodeList();
     Node *start = new Node(0, 0, 0);
-    start->searchPosition(SYMBOL_START, env);
+    start->searchPosition(SYMBOL_START, env, 20, 20);
     Node *goal = new Node(0, 0, 0);
-    goal->searchPosition(SYMBOL_GOAL, env);
+    goal->searchPosition(SYMBOL_GOAL, env, 20, 20);
     openList->addElement(new Node(start->getRow(), start->getCol(), start->getDistanceTraveled()));
     Node *navi = nullptr;
     int shortest_index = 0;
     do
     {
         
-        shortest_index = selectNode(openList, goal, openList->getLength());
+        shortest_index = selectNode(openList, goal, openList->getLength(), 20*20);
 
         //Adds node details to navi
         navi = new Node(openList->getNode(shortest_index)->getRow(),
@@ -58,7 +58,7 @@ NodeList *PathSolver::getNodesExplored()
 NodeList *PathSolver::getPath(Env env)
 {
     // TODO
-    NodeList *path = new NodeList();
+    NodeList *path = new NodeList(this->nodesExplored->getLength());
     int path_dist = -1;
     int nodesLength = nodesExplored->getLength();
     bool nextStep = false;
@@ -80,7 +80,7 @@ NodeList *PathSolver::getPath(Env env)
         nextStep = false;
     }while(path_dist!=0);
 
-    NodeList *path_rev = new NodeList();
+    NodeList *path_rev = new NodeList(path->getLength());
     for(int i = path->getLength()-1; i >= 0; i--)
     {
         path_rev->addElement(new Node(path->getNode(i)->getRow(),
@@ -93,9 +93,9 @@ NodeList *PathSolver::getPath(Env env)
 //Custom methods/functions
 
 //Finds the node with the shortest distance to goal and not present in the closed list
-int PathSolver::selectNode(NodeList *openList, Node *goal, int length)
+int PathSolver::selectNode(NodeList *openList, Node *goal, int length, int max_dist)
 {
-    int shortest_dist = 400;
+    int shortest_dist = max_dist;
     int shortest_index = 0;
     for (int i = 0; i < length; i++)
     {
@@ -179,4 +179,44 @@ void PathSolver::nodeContains(Env env, int row, int col, int dist, NodeList** op
     }
 }
 
+//Milestone 4 functions
+PathSolver::PathSolver(int rows, int columns)
+{
+    //nodesExplored = new NodeList(rows, columns);
+    nodesExplored = new NodeList(rows*columns);
+}
+
+void PathSolver::forwardSearch(Env env, int rows, int columns)
+{
+    // NodeList *openList = new NodeList(rows, columns);
+    NodeList *openList = new NodeList(rows*columns);
+    Node *start = new Node(0, 0, 0);
+    start->searchPosition(SYMBOL_START, env, rows, columns);
+    Node *goal = new Node(0, 0, 0);
+    goal->searchPosition(SYMBOL_GOAL, env, rows, columns);
+    openList->addElement(new Node(start->getRow(), start->getCol(), start->getDistanceTraveled()));
+    Node *navi = nullptr;
+    int shortest_index = 0;
+    do
+    {
+        
+        shortest_index = selectNode(openList, goal, openList->getLength(), rows*columns);
+
+        //Adds node details to navi
+        navi = new Node(openList->getNode(shortest_index)->getRow(),
+        openList->getNode(shortest_index)->getCol(),
+        openList->getNode(shortest_index)->getDistanceTraveled());
+
+
+        nodeContains(env, navi->getRow() - 1, navi->getCol(), navi->getDistanceTraveled(), &openList);
+        nodeContains(env, navi->getRow() + 1, navi->getCol(), navi->getDistanceTraveled(), &openList);
+        nodeContains(env, navi->getRow(), navi->getCol() - 1, navi->getDistanceTraveled(), &openList);
+        nodeContains(env, navi->getRow(), navi->getCol() + 1, navi->getDistanceTraveled(), &openList);
+        nodesExplored->addElement(new Node(navi->getRow(),navi->getCol(),navi->getDistanceTraveled()));
+        delete navi;
+    } while (goalReached(nodesExplored, goal, nodesExplored->getLength()));
+    delete start;
+    delete goal;
+    delete openList;
+}
 //-----------------------------

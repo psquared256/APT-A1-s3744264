@@ -25,11 +25,17 @@ void testNode();
 void testNodeList();
 
 // Read a environment from standard input.
-void readEnvStdin(Env env);
+void readEnvStdin(Env env, char* envArray);
 
 // Print out a Environment to standard output with path.
 // To be implemented for Milestone 3
-void printEnvStdout(Env env, NodeList *solution);
+void printEnvStdout(Env env, NodeList *solution, int rows, int columns);
+
+//Milestone 4 functions
+int findRows(char* envArray);
+int findColumns(char* envArray);
+Env make_env(const int rows, const int cols);
+void delete_env(Env env, int rows, int cols);
 
 int main(int argc, char **argv)
 {
@@ -43,46 +49,96 @@ int main(int argc, char **argv)
     // std::cout << "DONE TESTING" << std::endl
     //           << std::endl;
 
+    char* envArray = new char[2147483647];
+    int envSize = 0;
+    while(!std::cin.eof()){
+        std::cin.get(envArray[envSize]);
+        envSize++;
+    }
+    envArray[envSize] = '\0';
+    // std::cout << envArray << std::endl;
+    int envRows = findRows(envArray);
+    int envColumns = findColumns(envArray);
+    // std::cout << envRows << std::endl;
+    // std::cout << envColumns << std::endl;
+    
+
     // Load Environment
-    Env env;
-    readEnvStdin(env);
+    Env env = make_env(envRows, envColumns);
+    // std::cout << "Environment created" << std::endl;
+    readEnvStdin(env, envArray);
+    delete[] envArray;
+
+    //milestone 4 code
+    PathSolver *pathSolver = new PathSolver(envRows, envColumns);
+    pathSolver->forwardSearch(env, envRows, envColumns);   
+    // std::cout << "Forward Search completed" << std::endl;
+    NodeList *exploredPositions = nullptr;
+    exploredPositions = pathSolver->getNodesExplored();    
+    // std::cout << "Explored positions retrieved" << std::endl;
+    NodeList *solution = pathSolver->getPath(env);
+    // std::cout << "Path retrieved" << std::endl;
+    printEnvStdout(env, solution, envRows, envColumns);
+    //milestone 4 code ends
+
 
     // Solve using forwardSearch
     // THIS WILL ONLY WORK IF YOU'VE FINISHED MILESTONE 2
-    PathSolver *pathSolver = new PathSolver();
-    pathSolver->forwardSearch(env);
+        //PathSolver *pathSolver = new PathSolver();
+        //pathSolver->forwardSearch(env);
 
-    NodeList *exploredPositions = nullptr;
-    exploredPositions = pathSolver->getNodesExplored();
+        //NodeList *exploredPositions = nullptr;
+        //exploredPositions = pathSolver->getNodesExplored();
 
     // Get the path
     // THIS WILL ONLY WORK IF YOU'VE FINISHED MILESTONE 3
-    NodeList *solution = pathSolver->getPath(env);
+        //NodeList *solution = pathSolver->getPath(env);
 
-    printEnvStdout(env, solution);
-
+        //printEnvStdout(env, solution);
+    delete_env(env, envRows, envColumns);
     delete pathSolver;
     delete exploredPositions;
     delete solution;
 }
 
-void readEnvStdin(Env env)
+void readEnvStdin(Env env, char* envArray)
 {
+    // std::cout << "Starting environment reading..." << std::endl;
     //TODO
 
-    int line = 0;
-    while (!std::cin.eof() && line < 20)
+
+    // char positionChar = 'a';
+    int position = 0;
+    int row = 0;
+    int column = 0;
+    bool arrayFilled = false;
+    while (!arrayFilled)
     {
-        std::cin >> env[line];
-        line++;
+        // std::cout << "Position no. " << position << std::endl;
+        if(envArray[position] == '\0')
+        {
+            arrayFilled = true;
+        } else if (envArray[position] == '\n')
+        {
+            row++;
+            column = 0;
+            position++;
+        } else
+        {
+            env[row][column] = envArray[position];
+            column++;
+            position++;
+        }
+        
     }
+    // std::cout << "Environment successfully read" << std::endl;
 
 }
 
 //Iterates through the array of nodes, and replaces the character of the environment
 //with the direction the robot has moved from any given position until the goal node.
 //Prints out the environment when completed.
-void printEnvStdout(Env env, NodeList *solution)
+void printEnvStdout(Env env, NodeList *solution, int rows, int columns)
 {
     //TODOs
     int solLength = solution->getLength();
@@ -110,11 +166,11 @@ void printEnvStdout(Env env, NodeList *solution)
         }
     }
 
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < 20; j++)
+        for (int j = 0; j < columns; j++)
         {
-            std::cout << env[i][j];
+            if(env[i][j] != '\0'){std::cout << env[i][j];}
         }
         std::cout << std::endl;
     }
@@ -206,4 +262,64 @@ void testNodeList()
 
     // Print out the NodeList
     std::cout << "PRINTING OUT A NODELIST IS AN EXERCISE FOR YOU TO DO" << std::endl;
+}
+
+//Milestone 4 functions
+int findRows(char* envArray)
+{
+    int numRows = 0;
+    int position = 0;
+    while(true)
+    {
+        if(envArray[position] == '\n')
+        {
+            numRows++;
+            position++;
+        } else if (envArray[position] == '\0')
+        {
+            numRows++;
+            return numRows;
+        } else{
+            position++;
+        }
+    }
+}
+
+int findColumns(char* envArray)
+{
+    int numColumns = 0;
+    int position = 0;
+    while(true)
+    {
+        if(envArray[position] == '\n')
+        {
+            return numColumns;
+        } else {
+            numColumns++;
+            position++;
+        }
+    }
+}
+
+Env make_env(const int rows, const int cols) {
+   Env env = nullptr;
+
+   if (rows >= 0 && cols >= 0) {
+      env = new char*[rows];
+      for (int i = 0; i != rows; ++i) {
+         env[i] = new char[cols];
+      }
+   }
+   return env;
+}
+
+void delete_env(Env env, int rows, int cols) {
+   if (rows >= 0 && cols >= 0) {
+      for (int i = 0; i != rows; ++i) {
+         delete env[i];
+      }
+      delete env;
+   }
+
+   return;
 }
