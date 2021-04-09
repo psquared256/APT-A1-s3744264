@@ -25,15 +25,15 @@ void testNode();
 void testNodeList();
 
 // Read a environment from standard input.
-void readEnvStdin(Env env, char* envArray);
+void readEnvStdin(Env env, const char* envArray);
 
 // Print out a Environment to standard output with path.
 // To be implemented for Milestone 3
 void printEnvStdout(Env env, NodeList *solution, int rows, int columns);
 
 //Milestone 4 functions
-int findRows(char* envArray);
-int findColumns(char* envArray);
+int findRows(const char* envArray);
+int findColumns(const char* envArray);
 Env make_env(const int rows, const int cols);
 void delete_env(Env env, int rows, int cols);
 
@@ -49,25 +49,22 @@ int main(int argc, char **argv)
     // std::cout << "DONE TESTING" << std::endl
     //           << std::endl;
 
-    char* envArray = new char[2147483647];
-    int envSize = 0;
+    
+    std::string envString = "";
+    char envPos = 'a';
     while(!std::cin.eof()){
-        std::cin.get(envArray[envSize]);
-        envSize++;
+        std::cin.get(envPos);
+        envString += envPos;
     }
-    envArray[envSize] = '\0';
-    // std::cout << envArray << std::endl;
-    int envRows = findRows(envArray);
-    int envColumns = findColumns(envArray);
-    // std::cout << envRows << std::endl;
-    // std::cout << envColumns << std::endl;
+    envString.pop_back();
+    int envRows = findRows(envString.c_str());
+    int envColumns = findColumns(envString.c_str());
     
 
     // Load Environment
     Env env = make_env(envRows, envColumns);
     // std::cout << "Environment created" << std::endl;
-    readEnvStdin(env, envArray);
-    delete[] envArray;
+    readEnvStdin(env, envString.c_str());
 
     //milestone 4 code
     PathSolver *pathSolver = new PathSolver(envRows, envColumns);
@@ -101,20 +98,15 @@ int main(int argc, char **argv)
     delete solution;
 }
 
-void readEnvStdin(Env env, char* envArray)
+void readEnvStdin(Env env, const char* envArray)
 {
-    // std::cout << "Starting environment reading..." << std::endl;
     //TODO
-
-
-    // char positionChar = 'a';
     int position = 0;
     int row = 0;
     int column = 0;
     bool arrayFilled = false;
     while (!arrayFilled)
     {
-        // std::cout << "Position no. " << position << std::endl;
         if(envArray[position] == '\0')
         {
             arrayFilled = true;
@@ -265,7 +257,7 @@ void testNodeList()
 }
 
 //Milestone 4 functions
-int findRows(char* envArray)
+int findRows(const char* envArray)
 {
     int numRows = 0;
     int position = 0;
@@ -285,7 +277,7 @@ int findRows(char* envArray)
     }
 }
 
-int findColumns(char* envArray)
+int findColumns(const char* envArray)
 {
     int numColumns = 0;
     int position = 0;
