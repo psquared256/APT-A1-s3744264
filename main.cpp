@@ -1,13 +1,22 @@
 /* Pemal Padukkage (s3744264)
 * 
-* This implementation takes an iterative approach.  One step is completed at a time
-* so that the code is not too complex, where part 1 reads in an array, part 2 focuses 
-* on finding the goal, part 3 focuses on thinning the nodelist so that only the 
-* shortest path is present, and part 4 modifies the environment using the thinned nodelist.  
-* The main issue encountered was in milestone 2 concerning the handling of dynamic memory
-* management, where certain functions would fail due to initial mishandling of memory on heap.
-* This issue was resolved by duplicating elements when necessary such as Nodes and NodeLists 
-* and reducing the use of heap memory when possible such as with methods fowardSearch and NodeContains.
+* This implementation takes an iterative approach.  One step is completed at a 
+* time so that the code is not too complex, where part 1 reads in an array,
+* part 2 focuses on finding the goal, part 3 focuses on thinning the nodelist 
+* so that only the shortest path is present, part 4 modifies the environment 
+* using the thinned nodelist, and part 5 focuses on reading an environment
+* of any given size.
+* The main issue encountered was in milestone 2 concerning the handling of 
+* dynamic memory management, where certain functions would fail due to initial
+* mishandling of memory on heap.  This issue was resolved by duplicating 
+* elements when necessary such as Nodes and NodeLists and reducing the use of
+* heap memory when possible such as with methods forwardSearch and NodeContains.
+* The main issue encountered in milestone 4 was being able to determine the
+* size of the environment solely from the input redirection, as once said input
+* was used or taken in any way, it was lost forever.  This issue was resolved
+* by first appending all input to a string by character, and then casting the
+* string as a character array before passing it through the methods 'findRows',
+* 'findColumns' and 'readEnvStdin'.
 */
 
 #include <iostream>
@@ -63,18 +72,14 @@ int main(int argc, char **argv)
 
     // Load Environment
     Env env = make_env(envRows, envColumns);
-    // std::cout << "Environment created" << std::endl;
     readEnvStdin(env, envString.c_str());
 
     //milestone 4 code
     PathSolver *pathSolver = new PathSolver(envRows, envColumns);
     pathSolver->forwardSearch(env, envRows, envColumns);   
-    // std::cout << "Forward Search completed" << std::endl;
     NodeList *exploredPositions = nullptr;
     exploredPositions = pathSolver->getNodesExplored();    
-    // std::cout << "Explored positions retrieved" << std::endl;
     NodeList *solution = pathSolver->getPath(env);
-    // std::cout << "Path retrieved" << std::endl;
     printEnvStdout(env, solution, envRows, envColumns);
     //milestone 4 code ends
 
@@ -100,7 +105,6 @@ int main(int argc, char **argv)
 
 void readEnvStdin(Env env, const char* envArray)
 {
-    //TODO
     int position = 0;
     int row = 0;
     int column = 0;
@@ -132,7 +136,6 @@ void readEnvStdin(Env env, const char* envArray)
 //Prints out the environment when completed.
 void printEnvStdout(Env env, NodeList *solution, int rows, int columns)
 {
-    //TODOs
     int solLength = solution->getLength();
     for (int i = 1; i < solLength - 1; i++)
     {
@@ -257,6 +260,14 @@ void testNodeList()
 }
 
 //Milestone 4 functions
+
+//Takes 1 parameter: a char array representing the given environment
+//(const char* envArray).
+
+//This function iterates through the array, incrementing the
+//value in numRows every time the character '\n' is found.
+
+//When the function reaches the character '\0', it returns the int numRows.
 int findRows(const char* envArray)
 {
     int numRows = 0;
@@ -277,6 +288,13 @@ int findRows(const char* envArray)
     }
 }
 
+//Takes 1 parameter: a char array representing the given environment
+//(const char* envArray).
+
+//This function iterates through the start of the array, incrementing the
+//value in numColumns if the current element is not '\n'
+
+//When the function reaches the character '\n', it returns the int numColumns.
 int findColumns(const char* envArray)
 {
     int numColumns = 0;

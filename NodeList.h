@@ -33,7 +33,6 @@ public:
     /*                                           */
     
     //Milestone 4 function prototypes
-    //NodeList(int rows, int columns);
     NodeList(int area);
 
 private:
